@@ -1,5 +1,5 @@
 class CompetitionTeamsController < ApplicationController
-  def new
-    
+  def update
+
   end
 end
