@@ -1,0 +1,6 @@
+<h1>Competition Index Page</h1>
+
+<h2>List of Competitions:</h2>
+<% @competitions.each do |competition| %>
+  <%= link_to "#{competition.name}", "/competitions/#{competition.id}" %>
+<% end %>

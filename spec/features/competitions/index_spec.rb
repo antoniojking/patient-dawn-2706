@@ -13,7 +13,7 @@ RSpec.describe 'Competition Index Page' do
     expect(page).to have_content(@competition3.name)
   end
 
-  xit 'links each name to the competition show page' do
+  it 'links each name to the competition show page' do
     visit "/competitions"
 
     expect(page).to have_link(@competition1.name)
