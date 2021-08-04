@@ -4,6 +4,7 @@
 <p><b>Sport:</b> <%= @competition.sport %></p>
 <p><b>Average Age of Players:</b> <%= @competition.teams.avg_age_players.to_f.round(0) %></p>
 
+<%= link_to "Register a New Team", "/competitions/#{@competition.id}/teams/new" %>
 
 <h2>List of Teams:</h2>
 <% @competition.teams.each do |team| %>
