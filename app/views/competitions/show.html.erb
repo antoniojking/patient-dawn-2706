@@ -1,0 +1,13 @@
+<h1><%= @competition.name %> Show Page</h1>
+
+<p><b>Location:</b> <%= @competition.location %></p>
+<p><b>Sport:</b> <%= @competition.sport %></p>
+
+<h2>List of Teams:</h2>
+<% @competition.teams.each do |team| %>
+  <div id="Team-<%= team.id %>">
+    <p><b>Team #: <%= team.id %></b></p>
+    <p><%= team.hometown %></p>
+    <p><%= team.nickname %></p>
+  </div>
+<% end %>
