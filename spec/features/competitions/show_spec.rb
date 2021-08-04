@@ -41,4 +41,23 @@ RSpec.describe 'Competition Show Page' do
 
     expect(page).to have_content("Average Age of Players: #{@competition1.teams.avg_age_players.to_f.round(0)}")
   end
+
+  # As a user
+  # When I visit a competition's show page
+  # Then I see a link to register a new team
+  # When I click this link
+  # Then I am taken to a new page where I see a form
+  # When I fill in this form with a team's hometown and nickname
+  # And I click submit
+  # Then I am redirected back to the competition's show page
+  # And I see the new team I created listed
+  it 'has link to register a new team' do
+    visit "/competitions/#{@competition1.id}"
+
+    expect(page).to have_link("Register a New Team")
+
+    click_on("Register a New Team")
+
+    expect(current_path).to eq("/competitions/new")
+  end
 end
