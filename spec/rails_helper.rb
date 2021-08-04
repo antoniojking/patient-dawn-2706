@@ -34,6 +34,43 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.before(:each) do
+    CompetitionTeam.destroy_all
+    Competition.destroy_all
+    Team.destroy_all
+    Player.destroy_all
+
+    # Competitions
+    @competition1 = Competition.create!(name: "Men's Regional", location: "Louisville", sport: 'basketball')
+    @competition2 = Competition.create!(name: "Women's Regional", location: "Longmont", sport: 'soccer')
+    @competition3 = Competition.create!(name: "Youth's Regional", location: "Loveland", sport: 'tennis')
+
+    # Teams
+    @team1 = @competition1.teams.create!(hometown: "Superior", nickname: "Rockets")
+    @team2 = @competition1.teams.create!(hometown: "Lyons", nickname: "Jets")
+    @team3 = @competition2.teams.create!(hometown: "Boulder", nickname: "Mustangs")
+    @team4 = @competition2.teams.create!(hometown: "Lafayette", nickname: "Cougars")
+    @team5 = @competition3.teams.create!(hometown: "Nederland", nickname: "Gauchos")
+    @team6 = @competition3.teams.create!(hometown: "Firestone", nickname: "Cowboys")
+
+    # Players
+    @player1 = @team1.players.create!(name: "Antonio King" , age: 33)
+    @player2 = @team1.players.create!(name: "Cameron Havard" , age: 35)
+    @player3 = @team2.players.create!(name: "Paul King" , age: 32)
+    @player4 = @team2.players.create!(name: "Daniel King" , age: 20)
+    @player5 = @team3.players.create!(name: "Megan Havard" , age: 36)
+    @player6 = @team3.players.create!(name: "Maria Marks" , age: 34)
+    @player7 = @team4.players.create!(name: "Veronica King" , age: 15)
+    @player8 = @team4.players.create!(name: "Violet Havard" , age: 50)
+    @player9 = @team5.players.create!(name: "Leyla King" , age: 6)
+    @player10 = @team5.players.create!(name: "Trevor King" , age: 3)
+    @player11 = @team6.players.create!(name: "Sean King" , age: 6)
+    @player12 = @team6.players.create!(name: "Scarlett King" , age: 3)
+
+    # Competition_Teams
+
+  end
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
